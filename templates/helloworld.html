@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+    	*{
+			margin:0;
+			padding: 0;
+			
+		}
+
+		body{
+			background-image: linear-gradient(to right, #642B73 0%, #C6426E  51%, #642B73  100%);
+			font-size: 15px; 
+			font-family: "Comic Sans MS", "Comic Sans", cursive;
+			color:white;
+			align-content: center;
+			text-align: center;
+			padding-top: 10px;
+		}
+		span{
+			color: red;
+		}
+ 		.box{
+ 			display: inline-block;
+		    width: 250px;
+		    height: 100px;
+		    padding: 10px;
+		    margin-right: 20px; 		
+		}
+ 		#box1 {
+		    border: 3px solid dodgerblue;
+		    font-size: 18px;
+		    border-radius: 10px;
+		    margin: 20px;
+		    background-color:maroon;
+		    color:dodgerblue;
+		  }
+
+		  #box2 {
+		    border:3px solid orangered;
+		    font-size: 18px;
+		    background-color:brown;
+		    border-radius: 10px;
+		    margin: 20px;
+		    color:orange;
+		  }
+		  #box3 {
+		      border: 3px solid salmon;
+		      background-color: purple;
+		      font-size: 18px;
+		      border-radius: 10px;
+		      margin: 20px;
+		      color:salmon;
+		  }
+		  #box4 {
+		      border: 3px solid maroon;
+		      background-color: lightcoral;
+		      font-size: 18px;
+		      border-radius: 10px;
+		      margin: 20px;
+		      color:maroon;
+		  }
+		  #box5 {
+		      border: 3px solid indigo;
+		      background-color: lightseagreen;
+		      font-size: 18px;
+		      border-radius: 10px;
+		      margin: 20px;
+		      color:indigo;
+		  }
+		  #box6 {
+		      border: 3px solid red;
+		      background-color:orange;
+		      font-size: 18px;
+		      border-radius: 10px;
+		      margin: 20px;
+		      color:red;
+		  }
+
+		header{
+			font-size:50px;
+			padding:20px 10px 20px 10px;
+		}
+		input{
+			padding: 10px;
+			border: 2px solid black;
+			border-radius:10px;
+			font-size: 20px;
+			background-color: dodgerblue;
+			color: white;
+			font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+		}
+		input:hover{
+			padding: 15px;
+			color:maroon;
+			background-color:salmon;
+		}
+		option{
+			width: 1000px;
+			height: 100px;		
+		}
+		.corona{
+			width: 150px;
+			float: left;
+			margin-right: -150px;
+			margin-left: 50px;
+			height: 150px;
+			animation: rotation 8s infinite linear;
+		}
+		
+		@keyframes rotation {
+		  from {
+		    transform: rotate(0deg);
+		  }
+		  to {
+		    transform: rotate(359deg);
+		  }
+		}
+    </style>
+    
+
+    <title>COVID-19 Web APP</title>
+  </head>
+  <body>
+
+
+  	<img class="corona" src="https://i.ibb.co/rcLSFGN/kk.png" alt="kk" border="0">
+    
+    <!--<img class="corona" src="https://i.ibb.co/n0ftQYx/Logo-Makr-9a-W3my.png" alt="Logo-Makr-9a-W3my" border="0">-->
+	<header><span> COVID-19</span> WORLDWIDE DATA </header>
+	
+  	
+  	 
+  	<form method="post" action="" style="padding-bottom:20px;">
+  		{% csrf_token %}
+  		<select name="selectedCountry" style="width:500px;height:50px;font-family: Comic Sans MS,Comic Sans, cursive;font-size:20px;margin-right:20px;border-radius: 10px;background-color: pink">
+
+  		{% for country in list1 %}
+ 		<option>{{country}}</option>
+ 		{% endfor %}
+
+ 		<input type="submit" name="" >
+ 		</select>
+  		
+  	</form>
+
+
+  	<h1 style="font-size:40px;padding-bottom:10px;color:maroon"> {{selectedCountry}} </h1>
+
+  	<div>
+  		<div id="box1" class="box">
+	  		<h2> New  </h2>
+	  		<h1>{{new}}</h1>  		
+	  	</div>
+	  	<div id="box2" class="box">
+	  		<h2>Active </h2>
+	  		<h1> {{active}}</h1>  		
+	  	</div>
+	  	<div id="box3" class="box">
+	  		<h2>Critical  </h2>
+	  		<h1>{{critical}}</h1>  		
+	  	</div>
+	  	<div id="box4" class="box">
+	  		<h2> Recovered  </h2>
+	  		<h1>{{recovered}}</h1>  		
+	  	</div>
+	  	<div id="box5" class="box">
+	  		<h2> Deaths </h2>
+	  		<h1>{{deaths}} </h1>  		
+	  	</div>
+	  	<div id="box6" class="box">
+	  		<h2> Total </h2>
+	  		<h1>{{total}}</h1>  		
+	  	</div>
+	  	<div><img style="float:right;margin:50px;margin-top:-100px" class="corona"  src="https://i.ibb.co/rcLSFGN/kk.png" alt="kk" border="0">
+  	</div>
+  	</div>
+  	
+  	<!-- using the variables from views.py 
+    <h1>Hello, {{string}} World !</h1>   --->
+
+    <!---Using the list variable in for loop from views.py
+
+    {% for mylist in mylist %}
+    <p>{{mylist}}</p>
+    {% endfor %}   ---> 
+    
+    
+  </body>
+</html>
